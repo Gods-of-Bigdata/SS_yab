@@ -1,4 +1,4 @@
-# Sahamyab
+# SS_Yab
 
 #### Tasks
 - [x] Sahamyab Crawler - NSQ Producer
@@ -18,8 +18,8 @@ requests (pip package)
 ### Installing
 
 1- Download latest NSQ binaries [HERE](https://nsq.io/deployment/installing.html).  
-2- Extract the archive, add bin folder to system PATH variable.
-3- In one shell, start ``nsqlookupd``:
+2- Extract the archive, add bin folder to system PATH variable.  
+3- In one shell, start ``nsqlookupd``:  
 ```
 $ nsqlookupd
 ```
