@@ -18,7 +18,7 @@ import requests
 import json
 import time
 from colorama import Fore, Back, Style, init
-
+from preprocess import sahamyab_preprocess
 class SahamYabAdapter:
     def __init__(self, API_URL='https://www.sahamyab.com/guest/twiter/list?v=0.1', MAX_TWEET_ID = 915269688):
         self.API_URL = API_URL
@@ -53,7 +53,7 @@ class NSQ_Writer:
 
 sahamyab = SahamYabAdapter()
 nsq = NSQ_Writer()
-
+process = sahamyab_preprocess()
 init(autoreset=True)
 
 # main loop
@@ -61,7 +61,8 @@ print('\t Waiting for tweets ...')
 
 def handle_tweet(tweet):
     print('{}[Producer]{} Tweet Id: {}, Username: {}'.format(Fore.GREEN, Fore.WHITE, tweet['id'], tweet['senderUsername']))
-    return nsq.pub(channel = 'sahamyab_tweets', message = json.dumps(tweet))
+    message = process.get_compelete_json(tweet)
+    return nsq.pub(channel = 'sahamyab_tweets', message = json.dumps(message))
 
 sahamyab.wait_for_tweets(handle_tweet)
             
