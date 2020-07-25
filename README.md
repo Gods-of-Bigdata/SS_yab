@@ -7,7 +7,7 @@
 - [ ] ML model
 - [ ] Clickhouse DBMS - PowerBI visualization
 
-### Prerequisites
+## Prerequisites
 
 ```
 NSQ
@@ -22,8 +22,8 @@ hazm (pip package)
 nltk (pip package)
 ```
 
-### Installing
-## - NSQ
+## Installing
+### - NSQ
 
 1- Download latest NSQ binaries [HERE](https://nsq.io/deployment/installing.html).  
 2- Extract the archive, add bin folder to system PATH variable.  
@@ -33,7 +33,7 @@ $ pip install pynsq colorama requests
 $ pip install hazm
 $ pip install https://github.com/sobhe/hazm/archive/master.zip --upgrade
 ```
-## - Preprocess
+### - Preprocess
 1- Install prerequisites libraries:
 ```
 $ pip install hazm (also will install nltk as prerequisite)
@@ -41,7 +41,7 @@ $ pip install https://github.com/sobhe/hazm/archive/master.zip --upgrade
 ```
 2- Download and extract nlp prerequisite [resource.zip](https://drive.google.com/file/d/1xf1NdmM_P5_3mt-74ausrst0xKpcD3L3/view?usp=sharing) in project folder.
 
-## - Cassandra
+### - Cassandra
 1- Install jdk-8
 ```
 $ sudo apt-get install openjdk-8-jdk
@@ -59,7 +59,7 @@ $ sudo apt-get install cassandra
 $ pip install cassandra-driver
 ```
 
-### Usage
+## Usage
 1- In one shell, start ``nsqlookupd``:  
 ```
 $ nsqlookupd
