@@ -1,3 +1,19 @@
+# Copyright (C) 2020  Gods of Bigdata
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
 import re
 import json
 import math 
@@ -25,17 +41,17 @@ class sahamyab_preprocess():
         self.expand_corpus = expand_corpus
         
         if self.corpus_path is not None:
-            with open(corpus_path) as json_file:
+            with open(corpus_path, encoding='utf-8') as json_file:
                 corpus =  json.load(json_file)   
             self.corpus = corpus['corpus']
             self.docs_num = corpus['docs_num'] 
             
-        with open(symbols_json_path) as json_file:
+        with open(symbols_json_path, encoding='utf-8') as json_file:
             data = json.load(json_file)
         lst = list(data.values())
         self.all_symbols_list = [item for sublist in lst for item in sublist]
         
-        with open(persian_lang_path) as json_file:
+        with open(persian_lang_path, encoding='utf-8') as json_file:
             persian_lang = json.load(json_file)
         
         self.epic_keywords = persian_lang['epic_keywords']
