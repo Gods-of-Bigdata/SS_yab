@@ -1,7 +1,7 @@
 from cassandra.cluster import Cluster
 
 
-class cassandra_api():
+class CassandraApi:
     def __init__(self, KEYSPACE):
 
         self.KEYSPACE = KEYSPACE

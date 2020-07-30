@@ -18,7 +18,7 @@ import requests
 import json
 import time
 from colorama import Fore, Back, Style, init
-from preprocess import sahamyab_preprocess
+from preprocess import Preprocess
 
 
 class SahamYabAdapter:
@@ -56,7 +56,7 @@ class NSQ_Writer:
 
 sahamyab = SahamYabAdapter()
 nsq = NSQ_Writer()
-process = sahamyab_preprocess()
+process = Preprocess()
 init(autoreset=True)
 
 # main loop

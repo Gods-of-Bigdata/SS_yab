@@ -17,9 +17,9 @@
 import nsq
 import json
 from colorama import Fore, Back, Style, init
-from cassandra_database import cassandra_api
+from cassandra_database import CassandraApi
 
-cassandra_db = cassandra_api('sahamyab')
+cassandra_db = CassandraApi('sahamyab')
 
 
 def handler(message):
