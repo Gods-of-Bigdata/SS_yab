@@ -18,15 +18,18 @@ import nsq
 import json
 from colorama import Fore, Back, Style, init
 
+
 def handler(message):
     recieved_message = json.loads(message.body)
-    print('{}[Consumer]{} Tweet Id: {}, Username: {}'.format(Fore.YELLOW, Fore.WHITE, recieved_message['id'], recieved_message['senderUsername']))
+    print('{}[Consumer]{} Tweet Id: {}, Username: {}'.format(Fore.YELLOW, Fore.WHITE, recieved_message['id'],
+                                                             recieved_message['senderUsername']))
     message.finish()
     return True
 
+
 r = nsq.Reader(message_handler=handler,
-        lookupd_http_addresses=['http://127.0.0.1:4161'],
-        topic='sahamyab_tweets', channel='example_reader', lookupd_poll_interval=15)
+               lookupd_http_addresses=['http://127.0.0.1:4161'],
+               topic='sahamyab_tweets', channel='example_reader', lookupd_poll_interval=15)
 
 init(autoreset=True)
 
