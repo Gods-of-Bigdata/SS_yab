@@ -62,7 +62,7 @@ $ pip install cassandra-driver
 ```
 
 ### - Elasticsearch & Kibana
-1- Instal [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) & [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html). (We are using 7.8.0)
+1- Install [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) & [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html). (We are using 7.8.0)
 
 For Ubuntu, follow these steps:  
 - Elasticsearch:
