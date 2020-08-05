@@ -15,7 +15,6 @@ NSQ
 pynsq (pip package)
 colorama (pip package)
 requests (pip package)
-
 openjdk-8
 Cassandra
 cassandra-driver (pip package)
@@ -63,10 +62,10 @@ $ pip install cassandra-driver
 ```
 
 ### - Elasticsearch & Kibana
-Instal [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) & [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html). (We are using 7.8.0)
+1- Instal [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) & [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html). (We are using 7.8.0)
 
 For Ubuntu, follow these steps:  
-1- Elasticsearch:
+- Elasticsearch:
 ```
 $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 $ sudo apt-get install apt-transport-https
@@ -74,7 +73,7 @@ $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo te
 $ sudo apt-get update && sudo apt-get install elasticsearch
 ```
 
-2- Kibana:
+- Kibana:
 ```
 $ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 $ sudo apt-get install apt-transport-https
@@ -82,7 +81,7 @@ $ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo te
 $ sudo apt-get update && sudo apt-get install kibana
 ```
 
-3- Install [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/master/api.html)
+2- Install [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/master/api.html)
 ```
 $ python -m pip install elasticsearch
 ```
