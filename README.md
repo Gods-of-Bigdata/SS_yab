@@ -3,7 +3,8 @@
 #### Tasks
 - [x] Sahamyab Crawler - NSQ Producer
 - [x] Tweet Preprocessing - Cassandra DBMS
-- [ ] Kibana dashboard - Flask dashboard 
+- [x] Elastic - Kibana dashboard - Redis 
+- [ ] Flask dashboard 
 - [ ] ML model
 - [ ] Clickhouse DBMS - PowerBI visualization
 
@@ -20,6 +21,8 @@ Cassandra
 cassandra-driver (pip package)
 hazm (pip package)
 nltk (pip package)
+elasticsearch (pip package)
+redis (pip package)
 ```
 
 ## Installing
@@ -59,6 +62,50 @@ $ sudo apt-get install cassandra
 $ pip install cassandra-driver
 ```
 
+### - Elasticsearch & Kibana
+Instal [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) & [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html). (We are using 7.8.0)
+
+For Ubuntu, follow these steps:  
+1- Elasticsearch:
+```
+$ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+$ sudo apt-get install apt-transport-https
+$ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+$ sudo apt-get update && sudo apt-get install elasticsearch
+```
+
+2- Kibana:
+```
+$ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+$ sudo apt-get install apt-transport-https
+$ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+$ sudo apt-get update && sudo apt-get install kibana
+```
+
+3- Install [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/master/api.html)
+```
+$ python -m pip install elasticsearch
+```
+
+### - Redis
+1- Install [Redis](https://redis.io/)
+```
+$ sudo apt update
+$ sudo apt install redis-server
+```
+
+2- In the config file:
+change ``supervised no`` to ``supervised systemd``, so it will run with system start-up.  
+In the end, restart the server:
+```
+$ sudo systemctl restart redis.service
+```
+
+3- Install [redis-py](https://redis-py.readthedocs.io/en/stable/) (or [here](https://pypi.org/project/redis/)):
+```
+$ pip install redis
+```
+
 ## Usage
 1- In one shell, start ``nsqlookupd``:  
 ```
@@ -80,9 +127,28 @@ $ python sahamyab_producer.py
 ```
 $ python sahamyab_consumer_example.py
 ```
-** for use cassandra_consumer.py you must first run Cassandra:
+** To use consumer.py you must first run these:  
+Cassandra:
 ```
 $ sudo Cassandra -R
+```
+Elasticsearch:
+```
+$ sudo /bin/systemctl daemon-reload
+$ sudo /bin/systemctl enable elasticsearch.service
+$ sudo systemctl start elasticsearch.service
+```
+Kibana:
+```
+$ sudo /bin/systemctl daemon-reload
+$ sudo /bin/systemctl enable kibana.service
+$ sudo systemctl start kibana.service
+```
+Also you need to import ```dashboard.ndjson``` into Kibana (Saved objects).  
+Redis:  
+If u did that config part, should already be runnig; if not:
+```
+$ sudo systemctl start redis.service
 ```
 
 ## License
