@@ -93,8 +93,7 @@ $ sudo apt update
 $ sudo apt install redis-server
 ```
 
-2- In the config file:
-change ``supervised no`` to ``supervised systemd``, so it will run with system start-up.  
+2- In the config file, change ``supervised no`` to ``supervised systemd``, so it will run with the system start-up.  
 In the end, restart the server:
 ```
 $ sudo systemctl restart redis.service
