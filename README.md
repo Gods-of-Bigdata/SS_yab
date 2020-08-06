@@ -22,6 +22,7 @@ hazm (pip package)
 nltk (pip package)
 elasticsearch (pip package)
 redis (pip package)
+wordcloudfa (pip package)
 ```
 
 ## Installing
