@@ -130,6 +130,13 @@ dmypy.json
 
 # NSQ
 nsqd.dat
+sahamyab_tweets.diskqueue.meta.dat
+sahamyab_tweets:example_reader.diskqueue.meta.dat
+sahamyab_tweets:clickhouse_reader.diskqueue.000000.dat
+sahamyab_tweets:clickhouse_reader.diskqueue.meta.dat
 
 # IDEA
 .idea/
+
+# Temp File
+temp.ipynb
