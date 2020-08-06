@@ -1,0 +1,26 @@
+{% extends 'dashboard_base.html' %} {% block title %} توییت گرد {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">analytics</i>
+            </div>
+
+            <div class="card-content">
+                <h3 class="card-title">تحلیلگر آماری</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %} {% block scripts %}
+<script>
+    var table = $('#datatable').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Persian.json"
+        }
+    });
+</script>
+{% endblock %}

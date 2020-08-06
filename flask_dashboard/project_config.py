@@ -1,0 +1,2 @@
+secret_key = '2dsfsfdsdsg333333rfjweiocndsoicnwffewdee32e324'
+password_salt = '3r54geeasxcvbnjuef4rfvfsdeweqqqnhgg'

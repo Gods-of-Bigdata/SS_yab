@@ -1,0 +1,79 @@
+{% extends 'dashboard_base.html' %} {% block title %} داشبورد {% endblock %} {% block content %}
+
+<h3>به پنل سهام یاب خوش آمدید!</h3>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="orange">
+                <i class="material-icons">content_copy</i>
+            </div>
+            <div class="card-content">
+                <p class="category">فضای استفاده شده دیسک</p>
+                <h3 class="card-title">{{ stat.disk_used }}/{{ stat.disk_total }}
+                    <small>مگابایت</small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons text-danger">warning</i> <a>برای عملکرد صحیح سرور حداقل یک گیگابایت فضای
+                    خالی دیسک مورد نیاز است.</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-stats ">
+            <div class="card-header" data-background-color="green">
+                <i class="material-icons">sd_storage</i>
+            </div>
+            <div class="card-content">
+                <p class="category">فضای استفاده شده رم</p>
+                <h3 class="card-title">{{ stat.ram_used }}/{{ stat.ram_total }}
+                    <small>مگابایت</small>
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons text-danger">warning</i> <a>برای عملکرد صحیح سرور حداقل ۳۰۰ مگابایت فضای خالی رم مورد نیاز است.</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-stats ">
+            <div class="card-header" data-background-color="rose">
+                <i class="material-icons">developer_board</i>
+            </div>
+            <div class="card-content">
+                <p class="category">مصرف پردازنده</p>
+                <h3 class="card-title">{{ stat.cpu_used }}
+                    <small>درصد</small>
+                </h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-stats ">
+            <div class="card-header" data-background-color="rose">
+                <i class="material-icons">network_check</i>
+            </div>
+            <div class="card-content">
+                <p class="category">مصرف پهنای باند</p>
+                <h3 class="card-title">{{ stat.net_used }}
+                    <small>مگابایت</small>
+                </h3>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} {% block scripts %}
+<script>
+    $('#dashboardLink').addClass('active');
+</script>
+{% endblock %}
