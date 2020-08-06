@@ -23,6 +23,8 @@ nltk (pip package)
 elasticsearch (pip package)
 redis (pip package)
 wordcloudfa (pip package)
+
+flask-login(pip package)
 ```
 
 ## Installing
