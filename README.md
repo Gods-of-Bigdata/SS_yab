@@ -23,7 +23,8 @@ nltk (pip package)
 elasticsearch (pip package)
 redis (pip package)
 wordcloudfa (pip package)
-
+jwt (pip package)
+psutil (pip package)
 flask-login(pip package)
 ```
 
