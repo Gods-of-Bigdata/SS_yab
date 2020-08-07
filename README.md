@@ -23,6 +23,9 @@ nltk (pip package)
 elasticsearch (pip package)
 redis (pip package)
 wordcloudfa (pip package)
+jwt (pip package)
+psutil (pip package)
+flask-login(pip package)
 ```
 
 ## Installing
@@ -145,8 +148,8 @@ $ sudo systemctl start kibana.service
 ```
 Also you need to import ```dashboard.ndjson``` into Kibana (Saved objects).
 
-Redis:
-If u did that config part, should already be runnig; if not:
+Redis:  
+If you did that config part, should already be runnig; if not:
 ```
 $ sudo systemctl start redis.service
 ```
