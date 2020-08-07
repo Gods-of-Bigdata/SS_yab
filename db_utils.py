@@ -10,7 +10,7 @@ def key_date_appendix(sendTime_str):
     y = sendTime_str[:4]      # '2020'
     m = sendTime_str[5:7]     # '07'
     d = sendTime_str[8:10]    # '21'
-    h = str(int(sendTime_str[11:13]) + 5 )  # '11'
+    h = sendTime_str[11:13]  # '11'
     mnt = sendTime_str[14:16]
     dlt = timedelta(hours=4,minutes=30)
     dt = datetime(int(y),int(m),int(d),int(h),int(mnt))+ dlt
