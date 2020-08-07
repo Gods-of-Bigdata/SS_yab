@@ -20,6 +20,14 @@ from mainServer.auth import permit, authApp
 from webPanel.webPanel import *
 import flask_login
 from bson.objectid import ObjectId
+from redis.client import Redis
+from elasticsearch import Elasticsearch
+from mainServer.db_utils import CassandraApi,redisApi,elasticQuery
+
+redis_client = Redis("localhost", port=6379)
+redis_api = redisApi(redis_client)
+cassandra_api = CassandraApi('sahamyab')
+es_client = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
 print("main server start")
 
@@ -46,6 +54,26 @@ app.config['MAX_CONTENT_LENGTH'] = 128 * 1024 * 1024   # max upload size = 128mB
 @app.route("/")
 def login_page():
     return redirect(url_for('webpanel.login'))
+
+@app.route('/webpanel/searchtweets', methods=['GET', 'POST'])
+def cassandraRoutine():
+        data = request.form.to_dict()
+        if request.method == 'POST':
+            result_set = cassandra_api.cassandraQuery(data)
+            output = elasticQuery(es_client,result_set)
+            return render_template("search.html",db_result=output)
+        else:
+            return render_template("search.html")
+
+@app.route('/webpanel/analytics', methods=['GET', 'POST'])
+def redisRoutine():
+        data = request.form.to_dict()
+        lists = redis_api.redis_list()
+        if request.method == 'POST':
+            counts = redis_api.redis_query(data)  
+            return render_template("analytics.html", redis_lists=lists, redis_counts=counts)
+        else:
+            return render_template("analytics.html", redis_lists=lists)
 
 # logout user and redirect back to login page
 

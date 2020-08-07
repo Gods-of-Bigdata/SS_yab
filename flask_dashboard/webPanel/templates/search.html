@@ -16,6 +16,156 @@
 
 </div>
 
+<body>
+
+    <div class="content">
+      <button  class="btn active" onclick="showForm('posts')">Posts</button>
+      <button  class="btn" onclick="showForm('users')">Users</button>
+      <button  class="btn" onclick="showForm('symbols')">Symbols</button>
+      <button  class="btn" onclick="showForm('keywords')">Keywords</button>
+    
+    
+
+      <form id="posts" method="post">
+        <input type="text" placeholder="Y" name="sY" id="sY" maxlength="2" style="width:6%" required>
+        <input type="text" placeholder="M" name="sM" id="sM" maxlength="2" style="width:6%" required>
+        <input type="text" placeholder="D" name="sD" id="sD" maxlength="2" style="width:6%">
+        <input type="text" placeholder="H" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
+   
+
+        <button class="btn" type="submit" name="table" value="posts">Search</button>
+      </form>
+      
+      <form id="users" method="post">
+        <input type="text" placeholder="Enter Username" name="username" id="username" required><br>
+
+        <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
+        <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>    
+
+        <button class="btn" type="submit" name="table" value="users">Search</button>
+      </form>
+
+      <form id="symbols" method="post">
+        <input type="text" placeholder="Enter Symbol" name="symbol" id="symbol" required><br>
+
+        <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
+        <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
+        <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
+        <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>     
+        <button class="btn" type="submit" name="table" value="symbols">Search</button>
+     
+      </form>
+      
+      <form id="keywords" method="post" >
+        <input type="text" placeholder="Enter Keyword" name="keyword" id="keyword" required><br>        
+
+          <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
+          <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
+          <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
+          <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
+          <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
+          <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
+          <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
+          <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>    
+
+          <button class="btn" type="submit" name="table" value="keywords">Search</button>
+      </form>      
+ 
+    </div>
+
+    <div >
+      {% if db_result is defined %}
+      
+      <table>
+        <tr>
+          <th>Keywords</th>
+          <th>Symbols</th>
+          <th>Content</th>
+          <th>User</th>
+          <th>timePersian</th>
+          <th>ID</th>
+        </tr>
+        {% for row in db_result %}
+        <tr>
+          
+          
+          <td>{{row.keywords}}</td>
+          <td>{{row.symbols}}</td>
+          <td>{{row.content}}</td>
+          <td>{{row.senderUsername}}</td>
+          <td>{{row.sendTimePersian}}</td>
+          <td>{{row.id}}</td>
+        </tr>
+        {% endfor %} 
+      </table>
+     
+
+ 
+      {% endif %}
+    </div>
+
+    <script>
+    
+      var postsForm = document.getElementById('posts');
+      var usersForm = document.getElementById('users');
+      var symbolsForm = document.getElementById('symbols');
+      var keywordsForm = document.getElementById('keywords');      
+      // Hide the two forms when the page loads
+        postsForm.style.display = "block";
+        usersForm.style.display = "none";
+        symbolsForm.style.display = "none";
+        keywordsForm.style.display = "none";
+
+      // Create a function that shows and hides the forms
+      function showForm(x){
+      if(x=='posts'){ /* Check what form should be shown */
+        postsForm.style.display = "block";
+        usersForm.style.display = "none";
+        symbolsForm.style.display = "none";
+        keywordsForm.style.display = "none";
+      }else if(x=='users') {
+        postsForm.style.display = "none";
+        usersForm.style.display = "block";
+        symbolsForm.style.display = "none";
+        keywordsForm.style.display = "none";
+      }else if(x=='symbols') {
+        postsForm.style.display = "none";
+        usersForm.style.display = "none";
+        symbolsForm.style.display = "block";
+        keywordsForm.style.display = "none";
+      }else if(x=='keywords') {
+        postsForm.style.display = "none";
+        usersForm.style.display = "none";
+        symbolsForm.style.display = "none";
+        keywordsForm.style.display = "block";
+      }
+      }
+
+
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("buttonContainer");
+      var btns = header.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+        });
+      }
+    </script>
+
+</body>
+
 {% endblock %} {% block scripts %}
 <script>
     var table = $('#datatable').DataTable({
