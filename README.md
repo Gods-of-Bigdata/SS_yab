@@ -148,7 +148,7 @@ $ sudo systemctl start kibana.service
 ```
 Also you need to import ```dashboard.ndjson``` into Kibana (Saved objects).
 
-Redis:
+Redis:  
 If u did that config part, should already be runnig; if not:
 ```
 $ sudo systemctl start redis.service
