@@ -4,7 +4,7 @@
 
 table  td {
     font-size: 18px;
-    line-height: 4.6em;
+    line-height: normal;
 }
 
 .table > tbody > tr > td {

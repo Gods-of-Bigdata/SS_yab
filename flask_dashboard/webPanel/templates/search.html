@@ -15,17 +15,83 @@
     </div>
 
 </div>
+<style>
+body {
+  background-color: powderblue;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Page Content */
+.content {
+  text-align: center;
+  padding:20px;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  color: black;
+  cursor: pointer;
+}
+
+/* Style the active class (and buttons on mouse-over) */
+.active, .btn:hover {
+  background-color: #666;
+  color: white;
+}
+
+input[type=text] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  table-layout:fixed;
+  width: 85%;
+}
+
+td {
+  border: 2px solid #dddddd;
+  text-align: Right;
+  padding: 8px;
+}
+th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 
 <body>
 
     <div class="content">
-      <button  class="btn active" onclick="showForm('posts')">Posts</button>
-      <button  class="btn" onclick="showForm('users')">Users</button>
-      <button  class="btn" onclick="showForm('symbols')">Symbols</button>
-      <button  class="btn" onclick="showForm('keywords')">Keywords</button>
-    
-    
-
+      <div , id="tables">
+        <button  class="btn active" id="postBtn" onclick="showForm('posts')">Posts</button>
+        <button  class="btn" id="userBtn" onclick="showForm('users')">Users</button>
+        <button  class="btn" id="symbolBtn" onclick="showForm('symbols')">Symbols</button>
+        <button  class="btn" id="keywordBtn" onclick="showForm('keywords')">Keywords</button>
+      </div>
+      
       <form id="posts" method="post">
         <input type="text" placeholder="Y" name="sY" id="sY" maxlength="2" style="width:6%" required>
         <input type="text" placeholder="M" name="sM" id="sM" maxlength="2" style="width:6%" required>
@@ -88,29 +154,27 @@
       
       <table>
         <tr>
+          <th style="width:35%">Content</th>
           <th>Keywords</th>
           <th>Symbols</th>
-          <th>Content</th>
-          <th>User</th>
-          <th>timePersian</th>
-          <th>ID</th>
+          <th style="width:15%">User</th>         
+          <th style="width:10%">ID</th>
+          <th style="width:15%">timePersian</th>
         </tr>
         {% for row in db_result %}
         <tr>
           
-          
+          <td>{{row.content}}</td>
           <td>{{row.keywords}}</td>
           <td>{{row.symbols}}</td>
-          <td>{{row.content}}</td>
-          <td>{{row.senderUsername}}</td>
-          <td>{{row.sendTimePersian}}</td>
-          <td>{{row.id}}</td>
+          <td style="font-size: small; text-align: center;">{{row.senderUsername}}</td>
+          <td style="font-size: small; text-align: center;">{{row.id}}</td>
+          <td style="text-align: center;">{{row.sendTimePersian}}</td>
+          
         </tr>
         {% endfor %} 
       </table>
      
-
- 
       {% endif %}
     </div>
 
@@ -133,6 +197,7 @@
         usersForm.style.display = "none";
         symbolsForm.style.display = "none";
         keywordsForm.style.display = "none";
+        
       }else if(x=='users') {
         postsForm.style.display = "none";
         usersForm.style.display = "block";
@@ -151,9 +216,7 @@
       }
       }
 
-
-      // Add active class to the current button (highlight it)
-      var header = document.getElementById("buttonContainer");
+      var header = document.getElementById("tables");
       var btns = header.getElementsByClassName("btn");
       for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function() {
