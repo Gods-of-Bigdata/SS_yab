@@ -85,7 +85,7 @@ def logout():
 # server start point
 
 def start():
-    app.run('127.0.0.1', port=9090, threaded=True)
+    app.run('0.0.0.0', port=443, threaded=True, ssl_context=('/etc/letsencrypt/live/ramona24.ir/cert.pem','/etc/letsencrypt/live/ramona24.ir/privkey.pem'))
 
 
 # return User class for given userid, return null if userid is invalid
