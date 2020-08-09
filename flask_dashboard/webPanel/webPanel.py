@@ -42,7 +42,7 @@ webPanelApp = Blueprint('webpanel', __name__, template_folder='templates', stati
 @login_required
 def index():
     stat = {}
-    disk_usage = shutil.disk_usage("/root")
+    disk_usage = shutil.disk_usage("/")
     #disk_usage = shutil.disk_usage("C:\\")
     stat['disk_total'] = disk_usage.total // (2 ** 20)
     stat['disk_used'] = disk_usage.used // (2 ** 20)

@@ -85,7 +85,7 @@ def logout():
 # server start point
 
 def start():
-    app.run('127.0.0.1', port=9090, threaded=True)
+    app.run('0.0.0.0', port=80, threaded=True)
 
 
 # return User class for given userid, return null if userid is invalid
