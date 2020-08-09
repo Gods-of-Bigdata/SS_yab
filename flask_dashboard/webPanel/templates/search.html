@@ -3,237 +3,423 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-header-icon" data-background-color="rose">
-                <i class="material-icons">pageview</i>
+
+            <div class="card-header card-header-tabs" data-background-color="rose">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="active">
+                                <a href="#tweets" data-toggle="tab">
+                                    <i class="material-icons">message</i> توییت ها
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#users" data-toggle="tab">
+                                    <i class="material-icons">group</i> کاربران
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#symbols" data-toggle="tab">
+                                    <i class="material-icons">label</i> نماد ها
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#keywords" data-toggle="tab">
+                                    <i class="material-icons">code</i> کلید واژه ها
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="card-content">
-                <h3 class="card-title">جستجوی توییت ها</h3>
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tweets">
+                        <div class="table-responsive material-datatables">
+                            <form id="posts" method="post">
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sY" id="sY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sD" id="sD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sH" id="sH" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <button class="btn btn-rose btn-round" type="submit" name="table" value="posts">جستجو</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="users">
+                        <div class="table-responsive material-datatables">
+                            <form id="users" method="post">
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">نام کاربر</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input name="username" id="username" type="text" class="form-control" style="width:30%" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sY" id="sY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sD" id="sD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eY" id="eY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eD" id="eD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+
+                                <button class="btn btn-success btn-round" type="submit" name="table" value="users">جستجو</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="symbols">
+                        <div class="table-responsive material-datatables">
+                            <form id="symbols" method="post">
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">نام نماد</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input name="symbol" id="symbol" type="text" class="form-control" style="width:30%" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sY" id="sY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sD" id="sD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eY" id="eY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eD" id="eD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <button class="btn btn-success btn-round" type="submit" name="table" value="symbols">جستجو</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="keywords">
+                        <div class="table-responsive material-datatables">
+
+
+                            <form id="keywords" method="post">
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">کلید واژه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input name="keyword" id="keyword" type="text" class="form-control" style="width:30%" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sY" id="sY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sD" id="sD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">از ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="sM" id="sM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا سال</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eY" id="eY" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ماه</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا روز</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eD" id="eD" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-1 text-center">تا ساعت</label>
+                                    <div class="col-sm-11">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            <input maxlength="2" name="eM" id="eM" type="text" class="form-control" style="width:30%">
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <button class="btn btn-success btn-round" type="submit" name="table" value="symbols">جستجو</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <br>
+                <div>
+                    {% if db_result is defined %}
+
+
+                    <div class="table-responsive material-datatables">
+                        <table class="table table-striped" id="datatable">
+                            <thead class="text-danger">
+                                <tr>
+                                    <th style="width:35%">توییت</th>
+                                    <th>کلید واژه</th>
+                                    <th>نماد ها</th>
+                                    <th style="width:15%">کاربر</th>
+                                    <th style="width:10%">شناسه</th>
+                                    <th style="width:15%">تاریخ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in db_result %}
+                                <tr>
+                                    <td class="text-center">{{row.content}}</td>
+                                    <td class="text-center">{{row.keywords}}</td>
+                                    <td class="text-center">{{row.symbols}}</td>
+                                    <td class="text-center">{{row.senderUsername}}</td>
+                                    <td class="text-center">{{row.id}}</td>
+                                    <td class="text-center">{{row.sendTimePersian}}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    {% endif %}
+                </div>
 
             </div>
         </div>
     </div>
 
 </div>
-<style>
-body {
-  margin: 0;
-}
 
-/* Header/Logo Title */
-.header {
-  padding: 20px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-}
-
-/* Page Content */
-.content {
-  text-align: center;
-  padding:20px;
-}
-
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 10px 16px;
-  background-color: #f1f1f1;
-  color: black;
-  cursor: pointer;
-}
-
-/* Style the active class (and buttons on mouse-over) */
-.active, .btn:hover {
-  background-color: #666;
-  color: white;
-}
-
-input[type=text] {
-  width: 25%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-
-table {
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
-  table-layout:fixed;
-  width: 85%;
-}
-
-td {
-  border: 2px solid #dddddd;
-  text-align: Right;
-  padding: 8px;
-}
-th {
-  border: 2px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-
-<body>
-
-    <div class="content">
-      <div , id="tables">
-        <button  class="btn active" id="postBtn" onclick="showForm('posts')">Posts</button>
-        <button  class="btn" id="userBtn" onclick="showForm('users')">Users</button>
-        <button  class="btn" id="symbolBtn" onclick="showForm('symbols')">Symbols</button>
-        <button  class="btn" id="keywordBtn" onclick="showForm('keywords')">Keywords</button>
-      </div>
-      
-      <form id="posts" method="post">
-        <input type="text" placeholder="Y" name="sY" id="sY" maxlength="2" style="width:6%" required>
-        <input type="text" placeholder="M" name="sM" id="sM" maxlength="2" style="width:6%" required>
-        <input type="text" placeholder="D" name="sD" id="sD" maxlength="2" style="width:6%">
-        <input type="text" placeholder="H" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
-   
-
-        <button class="btn" type="submit" name="table" value="posts">Search</button>
-      </form>
-      
-      <form id="users" method="post">
-        <input type="text" placeholder="Enter Username" name="username" id="username" required><br>
-
-        <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
-        <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>    
-
-        <button class="btn" type="submit" name="table" value="users">Search</button>
-      </form>
-
-      <form id="symbols" method="post">
-        <input type="text" placeholder="Enter Symbol" name="symbol" id="symbol" required><br>
-
-        <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
-        <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
-        <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
-        <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>     
-        <button class="btn" type="submit" name="table" value="symbols">Search</button>
-     
-      </form>
-      
-      <form id="keywords" method="post" >
-        <input type="text" placeholder="Enter Keyword" name="keyword" id="keyword" required><br>        
-
-          <input type="text" placeholder="sY" name="sY" id="sY" maxlength="2" style="width:6%">
-          <input type="text" placeholder="sM" name="sM" id="sM" maxlength="2" style="width:6%">
-          <input type="text" placeholder="sD" name="sD" id="sD" maxlength="2" style="width:6%">
-          <input type="text" placeholder="sH" name="sH" id="sH" maxlength="2" style="width:6%">    <br>
-          <input type="text" placeholder="eY" name="eY" id="eY" maxlength="2" style="width:6%">
-          <input type="text" placeholder="eM" name="eM" id="eM" maxlength="2" style="width:6%">
-          <input type="text" placeholder="eD" name="eD" id="eD" maxlength="2" style="width:6%">
-          <input type="text" placeholder="eH" name="eH" id="eH" maxlength="2" style="width:6%">    <br>    
-
-          <button class="btn" type="submit" name="table" value="keywords">Search</button>
-      </form>      
- 
-    </div>
-
-    <div >
-      {% if db_result is defined %}
-      
-      <table>
-        <tr>
-          <th style="width:35%">Content</th>
-          <th>Keywords</th>
-          <th>Symbols</th>
-          <th style="width:15%">User</th>         
-          <th style="width:10%">ID</th>
-          <th style="width:15%">timePersian</th>
-        </tr>
-        {% for row in db_result %}
-        <tr>
-          
-          <td>{{row.content}}</td>
-          <td>{{row.keywords}}</td>
-          <td>{{row.symbols}}</td>
-          <td style="font-size: small; text-align: center;">{{row.senderUsername}}</td>
-          <td style="font-size: small; text-align: center;">{{row.id}}</td>
-          <td style="text-align: center;">{{row.sendTimePersian}}</td>
-          
-        </tr>
-        {% endfor %} 
-      </table>
-     
-      {% endif %}
-    </div>
-
-    <script>
-    
-      var postsForm = document.getElementById('posts');
-      var usersForm = document.getElementById('users');
-      var symbolsForm = document.getElementById('symbols');
-      var keywordsForm = document.getElementById('keywords');      
-      // Hide the two forms when the page loads
-        postsForm.style.display = "block";
-        usersForm.style.display = "none";
-        symbolsForm.style.display = "none";
-        keywordsForm.style.display = "none";
-
-      // Create a function that shows and hides the forms
-      function showForm(x){
-      if(x=='posts'){ /* Check what form should be shown */
-        postsForm.style.display = "block";
-        usersForm.style.display = "none";
-        symbolsForm.style.display = "none";
-        keywordsForm.style.display = "none";
-        
-      }else if(x=='users') {
-        postsForm.style.display = "none";
-        usersForm.style.display = "block";
-        symbolsForm.style.display = "none";
-        keywordsForm.style.display = "none";
-      }else if(x=='symbols') {
-        postsForm.style.display = "none";
-        usersForm.style.display = "none";
-        symbolsForm.style.display = "block";
-        keywordsForm.style.display = "none";
-      }else if(x=='keywords') {
-        postsForm.style.display = "none";
-        usersForm.style.display = "none";
-        symbolsForm.style.display = "none";
-        keywordsForm.style.display = "block";
-      }
-      }
-
-      var header = document.getElementById("tables");
-      var btns = header.getElementsByClassName("btn");
-      for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-        });
-      }
-    </script>
-
-</body>
-
-{% endblock %} {% block scripts %}
 <script>
-    var table = $('#datatable').DataTable({
-        "language": {
-            "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Persian.json"
-        }
-    });
+    var postsForm = document.getElementById('posts');
+    var usersForm = document.getElementById('users');
+    var symbolsForm = document.getElementById('symbols');
+    var keywordsForm = document.getElementById('keywords');
+
+
+
+    var header = document.getElementById("tables");
+    var btns = header.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
 </script>
+
 {% endblock %}

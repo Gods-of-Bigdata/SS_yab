@@ -24,16 +24,15 @@ client = Client('localhost')
 # client.execute('DROP TABLE IF EXISTS default.sahamyab')
 client.execute('CREATE TABLE IF NOT EXISTS default.sahamyab '
                '('
-               'id Int64,'
-               'sendTime DateTime,'
-               'sendTimePersian String,'
+               'id INTEGER,'
+               'sendTime DATETIME,'
+               'sendTimePersian VARCHAR,'
                'hashtags Array(Nullable(String)),'
                'keywords Array(Nullable(String)),'
                'symbols Array(Nullable(String)),'
-               'image String,'
-               'senderUsername String,'
-               'senderName String,'
-               'content String'
+               'senderUsername VARCHAR,'
+               'senderName VARCHAR,'
+               'content VARCHAR'
                ')'
                ' ENGINE = MergeTree PARTITION BY toYYYYMMDD(sendTime) ORDER BY toYYYYMMDD(sendTime)')
 
@@ -47,7 +46,6 @@ def handler(message):
         recieved_message['hashtags'],
         recieved_message['keywords'],
         recieved_message['symbols'],
-        str(recieved_message['image']) if recieved_message['image'] != [] else '',
         recieved_message['senderUsername'],
         recieved_message['senderName'],
         recieved_message['content']
@@ -60,7 +58,6 @@ def handler(message):
                             'hashtags,'
                             'keywords,'
                             'symbols,'
-                            'image,'
                             'senderUsername,'
                             'senderName,'
                             'content'
