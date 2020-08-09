@@ -10,203 +10,189 @@
             <div class="card-content">
                 <h3 class="card-title">تحلیلگر آماری</h3>
             </div>
+
+
+            <div class="content">
+                <form id="redis" method="post">
+                    <input type="text" placeholder="نام کاربر" name="username" id="username" required>
+                    <input type="text" placeholder="نماد" name="symbol" id="symbol" required>
+
+                    <button class="btn btn-fill btn-rose" type="submit" name="submit" value="submit">جستجو</button>
+
+                    <table>
+                        <tr>
+                            <th>تعداد توییت های کاربر <br>
+                                <select name="userRange" id="userRange" class="selectpicker text-center" data-style="btn btn-rose btn-round" data-size="7">
+                                  <option value="1">1 ساعت</option>
+                                  <option value="6">6 ساعت</option>
+                                  <option value="12">12 ساعت</option>
+                                  <option value="24">24 ساعت</option>
+            </select>
+
+                            </th>
+
+                            <th>تعداد توییت های نماد <br>
+                                <select name="symbolRange" id="symbolRange" class="selectpicker text-center" data-style="btn btn-rose btn-round" data-size="7">
+                                  <option value="1">1 ساعت</option>
+                                  <option value="6">6 ساعت</option>
+                                  <option value="12">12 ساعت</option>
+                                  <option value="24">24 ساعت</option>
+            </select>
+                            </th>
+
+                            <th>تعداد کل توییت ها <br>
+                                <select name="postRange" id="postRange" class="selectpicker text-center" data-style="btn btn-rose btn-round" data-size="7">
+                                  <option value="1">1 ساعت</option>
+                                  <option value="6">6 ساعت</option>
+                                  <option value="12">12 ساعت</option>
+                                  <option value="24">24 ساعت</option>
+                                </select>
+                            </th>
+
+                            <th>تعداد کلیدواژه های یکتا<br>
+                                <select name="keywordRange" id="keywordRange" class="selectpicker text-center" data-style="btn btn-rose btn-round" data-size="7">
+                                  <option value="1">1 ساعت</option>
+                                  <option value="6">6 ساعت</option>
+                                  <option value="12">12 ساعت</option>
+                                  <option value="24">24 ساعت</option>
+            </select>
+                            </th>
+
+                        </tr>
+                        {% if redis_counts is defined %}
+                        <tr>
+                            <td style="text-align: center;">
+                                {{redis_counts.userPostsCount}}
+                            </td>
+                            <td style="text-align: center;">
+                                {{redis_counts.symbolPostsCount}}
+                            </td>
+                            <td style="text-align: center;">
+                                {{redis_counts.allPostsCount}}
+                            </td>
+                            <td style="text-align: center;">
+                                {{redis_counts.keywordUniqueCount}}
+                            </td>
+
+                        </tr>
+                        {% endif %}
+                    </table>
+                </form>
+
+                <table style="width: 35%; margin-top: 50px; margin-left: 100px; float: left">
+                    <tr>
+
+                        <th>لیست کلیدواژه ها</th>
+                    </tr>
+                    {% if redis_lists is defined %} {% for row in redis_lists.keywordList %}
+                    <tr>
+                        <td>
+                            {{row}}
+                        </td>
+                    </tr>
+
+                    {% endfor %} {% endif %}
+
+                </table>
+
+                <table style="width: 35%; margin-top: 50px; margin-right: 100px; float:right">
+                    <tr>
+
+                        <th>لیست توییت ها</th>
+                    </tr>
+                    {% if redis_lists is defined %} {% for row in redis_lists.postList %}
+                    <tr>
+                        <td>
+                            {{row}}
+                        </td>
+                    </tr>
+
+                    {% endfor %} {% endif %}
+
+                </table>
+                <br>
+            </div>
+
         </div>
     </div>
 
 </div>
 
 <style>
-  body {
-    margin: 0;
-  }
-  
-  /* Header/Logo Title */
-  .header {
-    padding: 20px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-  }
-  
-  /* Page Content */
-  .content {
-    text-align: center;
-    padding:20px;
-  }
-  
-  /* Style the buttons */
-  .btn {
-    border: none;
-    outline: none;
-    padding: 10px 16px;
-    background-color: #f1f1f1;
-    color: black;
-    cursor: pointer;
-  }
-  
-  /* Style the active class (and buttons on mouse-over) */
-  .active, .btn:hover {
-    background-color: #666;
-    color: white;
-  }
-  
-  input[type=text] {
-    width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-  }
-  
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-    table-layout:fixed;
-    width: 85%;
-  }
-  
-  td {
-    border: 2px solid #dddddd;
-    text-align: Right;
-    padding: 8px;
-  }
-  th {
-    border: 2px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  </style>
-
-<body>
-
-    <div class="content">
-      <form id="redis" method="post">
-        <input type="text" placeholder="Enter Username" name="username" id="username" required>
-        <input type="text" placeholder="Enter Symbol" name="symbol" id="symbol" required>
-
-        <button class="btn" type="submit" name="submit" value="submit">Search</button>
-      
-     
-      <table>
-        <tr>
-          <th>User Posts Count <br>
-              <select name="userRange" id="userRange">
-                <option value="1">1h</option>
-                <option value="6">6h</option>
-                <option value="12">12h</option>
-                <option value="24">24h</option>
-              </select>
-           
-          </th>
-
-          <th>Symbol Posts Count <br>
-              <select name="symbolRange" id="symbolRange">
-                <option value="1">1h</option>
-                <option value="6">6h</option>
-                <option value="12">12h</option>
-                <option value="24">24h</option>
-              </select>  
-          </th>
-
-          <th>All Posts Count <br>
-              <select name="postRange" id="postRange">
-                <option value="1">1h</option>
-                <option value="6">6h</option>
-                <option value="12">12h</option>
-                <option value="24">24h</option>
-              </select>
-          </th>
-
-          <th>Unique Keywords Count <br>
-              <select name="keywordRange" id="keywordRange">
-                <option value="1">1h</option>
-                <option value="6">6h</option>
-                <option value="12">12h</option>
-                <option value="24">24h</option>
-              </select> 
-          </th>
-          
-        </tr>
-        {% if redis_counts is defined %}
-        <tr>
-          <td style="text-align: center;">
-            {{redis_counts.userPostsCount}}
-          </td>
-          <td style="text-align: center;">
-            {{redis_counts.symbolPostsCount}}
-          </td>
-          <td style="text-align: center;">
-            {{redis_counts.allPostsCount}}
-          </td>
-          <td style="text-align: center;">
-            {{redis_counts.keywordUniqueCount}}
-          </td>
-
-        </tr>
-        {% endif %}
-      </table>
-    </form>
-
-      <table  style="width: 35%; margin-top: 50px; margin-left: 100px; float: left">
-        <tr>
-         
-          <th>Keywords List</th>
-        </tr>
-          {% if redis_lists is defined %}
-      
-          {% for row in redis_lists.keywordList %}
-          <tr>
-             <td>
-              {{row}}
-             </td> 
-          </tr>
-
-          {% endfor %} 
-
-        {% endif %}
- 
-      </table>
-
-      <table  style="width: 35%; margin-top: 50px; margin-right: 100px; float:right">
-        <tr>
-         
-          <th>Posts List</th>
-        </tr>
-          {% if redis_lists is defined %}
-      
-          {% for row in redis_lists.postList %}
-          <tr>
-             <td>
-              {{row}}
-             </td> 
-          </tr>
-
-          {% endfor %} 
-
-        {% endif %}
- 
-      </table>      
-    </div>
-
+    body {
+        margin: 0;
+    }
+    /* Header/Logo Title */
     
-    <script>
-      submitForms = function(){
-      document.forms[0].submit();
-      document.forms[1].submit();
-      document.forms[0].submit();
-      document.forms[0].submit();
-      document.getElementById("userForm").submit();
-      document.getElementById("symbolForm").submit();
-      document.getElementById("postForm").submit();
-      document.getElementById("keywordForm").submit();
-}
-    </script>
+    .header {
+        padding: 20px;
+        text-align: center;
+        background: #1abc9c;
+        color: white;
+    }
+    /* Page Content */
+    
+    .content {
+        text-align: center;
+        padding: 20px;
+    }
+    /* Style the buttons */
+    /* Style the active class (and buttons on mouse-over) */
+    
+    .active,
+    .btn:hover {
+        background-color: #666;
+        color: white;
+    }
+    
+    input[type=text] {
+        width: 25%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 85%;
+    }
+    
+    td {
+        border: 2px solid #dddddd;
+        text-align: Right;
+        padding: 8px;
+    }
+    
+    th {
+        border: 2px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+        font-size: 1.2em;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
 
-</body>
+
+<script>
+    submitForms = function() {
+        document.forms[0].submit();
+        document.forms[1].submit();
+        document.forms[0].submit();
+        document.forms[0].submit();
+        document.getElementById("userForm").submit();
+        document.getElementById("symbolForm").submit();
+        document.getElementById("postForm").submit();
+        document.getElementById("keywordForm").submit();
+    }
+</script>
+
+
 
 
 
