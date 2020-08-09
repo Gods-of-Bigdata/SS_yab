@@ -21,7 +21,7 @@ from datetime import datetime
 from colorama import Fore, Back, Style, init
 
 client = Client('localhost')
-# client.execute('DROP TABLE IF EXISTS default.sahamyab')
+client.execute('DROP TABLE IF EXISTS default.sahamyab')
 client.execute('CREATE TABLE IF NOT EXISTS default.sahamyab '
                '('
                'id Int64,'
@@ -30,7 +30,7 @@ client.execute('CREATE TABLE IF NOT EXISTS default.sahamyab '
                'hashtags Array(Nullable(String)),'
                'keywords Array(Nullable(String)),'
                'symbols Array(Nullable(String)),'
-               'image String,'
+               # 'image String,'
                'senderUsername String,'
                'senderName String,'
                'content String'
@@ -47,7 +47,7 @@ def handler(message):
         recieved_message['hashtags'],
         recieved_message['keywords'],
         recieved_message['symbols'],
-        str(recieved_message['image']) if recieved_message['image'] != [] else '',
+        # str(recieved_message['image']) if recieved_message['image'] != [] else '',
         recieved_message['senderUsername'],
         recieved_message['senderName'],
         recieved_message['content']
@@ -60,7 +60,7 @@ def handler(message):
                             'hashtags,'
                             'keywords,'
                             'symbols,'
-                            'image,'
+                            # 'image,'
                             'senderUsername,'
                             'senderName,'
                             'content'
