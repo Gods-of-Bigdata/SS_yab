@@ -21,7 +21,7 @@ from datetime import datetime
 from colorama import Fore, Back, Style, init
 
 client = Client('localhost')
-client.execute('DROP TABLE IF EXISTS default.sahamyab')
+# client.execute('DROP TABLE IF EXISTS default.sahamyab')
 client.execute('CREATE TABLE IF NOT EXISTS default.sahamyab '
                '('
                'id Int64,'
