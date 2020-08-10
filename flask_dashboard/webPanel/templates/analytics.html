@@ -14,12 +14,28 @@
 
             <div class="content">
                 <form id="redis" method="post">
-                    <input type="text" placeholder="نام کاربر" name="username" id="username" required>
-                    <input type="text" placeholder="نماد" name="symbol" id="symbol" required>
+                    <div class="row">
+                        <label class="col-sm-1 text-center">نام کاربر</label>
+                        <div class="col-sm-11">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input name="username" id="username" type="text" class="form-control" style="width:30%" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-1 text-center">نام نماد</label>
+                        <div class="col-sm-11">
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input name="symbol" id="symbol" type="text" class="form-control" style="width:30%" required>
+                            </div>
+                        </div>
+                    </div>
 
-                    <button class="btn btn-fill btn-rose" type="submit" name="submit" value="submit">جستجو</button>
+                    <button class="btn btn-rose btn-round" type="submit" name="submit" value="submit">جستجو</button>
 
-                    <table>
+                    <table  class="table table-striped">
                         <tr>
                             <th>تعداد توییت های کاربر <br>
                                 <select name="userRange" id="userRange" class="selectpicker text-center" data-style="btn btn-rose btn-round" data-size="7">
@@ -79,7 +95,7 @@
                     </table>
                 </form>
 
-                <table style="width: 35%; margin-top: 50px; margin-left: 100px; float: left">
+                <table  class="table table-striped" style="width: 35%; margin-top: 50px; margin-left: 100px; float: left">
                     <tr>
 
                         <th>لیست کلیدواژه ها</th>
@@ -95,7 +111,7 @@
 
                 </table>
 
-                <table style="width: 35%; margin-top: 50px; margin-right: 100px; float:right">
+                <table  class="table table-striped" style="width: 35%; margin-top: 50px; margin-right: 100px; float:right">
                     <tr>
 
                         <th>لیست توییت ها</th>

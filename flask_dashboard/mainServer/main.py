@@ -58,6 +58,7 @@ def login_page():
 @app.route('/webpanel/searchtweets', methods=['GET', 'POST'])
 def cassandraRoutine():
         data = request.form.to_dict()
+        print(data)
         if request.method == 'POST':
             result_set = cassandra_api.cassandraQuery(data)
             output = elasticQuery(es_client,result_set)
@@ -68,6 +69,7 @@ def cassandraRoutine():
 @app.route('/webpanel/analytics', methods=['GET', 'POST'])
 def redisRoutine():
         data = request.form.to_dict()
+        print(data)
         lists = redis_api.redis_list()
         if request.method == 'POST':
             counts = redis_api.redis_query(data)  

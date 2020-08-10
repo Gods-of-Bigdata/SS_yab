@@ -220,8 +220,8 @@ class redisApi():
     def redis_query(self,flaskDict):
         user_posts_count = self.user_tweets_count(flaskDict['username'], hours_int=flaskDict['userRange'])
         symbol_posts_count = self.symbol_tweets_count(flaskDict['symbol'], hours_int=flaskDict['symbolRange'])
-        all_posts_count = self.total_tweets_count(hours_int=flaskDict['symbolRange'])
-        keyword_unique_count = self.unique_keywords_count()
+        all_posts_count = self.total_tweets_count(hours_int=flaskDict['postRange'])
+        keyword_unique_count = self.unique_keywords_count(hours_int=flaskDict['keywordRange'])
     
         counts = {'userPostsCount':user_posts_count,
                 'symbolPostsCount':symbol_posts_count,
