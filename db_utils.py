@@ -1,8 +1,6 @@
 from cassandra.cluster import Cluster
 from datetime import datetime, timedelta
 
-# copywrite
-# Persian date instead of Gregorian
 LIFE_TIME = 7 * 24 * 3600
 
 def key_date_appendix(sendTime_str):
