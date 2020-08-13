@@ -6,7 +6,7 @@
 - [x] Elastic - Kibana dashboard - Redis 
 - [ ] Flask dashboard 
 - [ ] ML model
-- [ ] Clickhouse DBMS - Superset visualization
+- [x] Clickhouse DBMS - Superset visualization
 
 ## Prerequisites
 
