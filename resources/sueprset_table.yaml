@@ -1,0 +1,39 @@
+- columns:
+  - column_name: Hashtag
+    expression: arrayJoin(hashtags as hashtag)
+    type: String
+  - column_name: Keyword
+    expression: arrayJoin(keywords as keyword)
+    type: String
+  - column_name: Symbol
+    expression: arrayJoin(symbols as symbol)
+    type: String
+  - column_name: senderName
+    type: VARCHAR
+  - column_name: sendTimePersian
+    type: VARCHAR
+  - column_name: senderUsername
+    type: VARCHAR
+  - column_name: image
+    type: VARCHAR
+  - column_name: content
+    type: VARCHAR
+  - column_name: sendTime
+    type: DATETIME
+  - column_name: id
+    type: INTEGER
+  - column_name: hashtags
+    type: UNKNOWN
+  - column_name: symbols
+    type: UNKNOWN
+  - column_name: keywords
+    type: UNKNOWN
+  filter_select_enabled: true
+  main_dttm_col: sendTime
+  metrics:
+  - expression: COUNT(*)
+    metric_name: count
+    verbose_name: COUNT(*)
+  schema: default
+  sql: ''
+  table_name: sahamyab

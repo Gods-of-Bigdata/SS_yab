@@ -1,0 +1,184 @@
+databases:
+- database_name: clickhouse
+  extra: "{\r\n    \"metadata_params\": {},\r\n    \"engine_params\": {},\r\n    \"\
+    metadata_cache_timeout\": {},\r\n    \"schemas_allowed_for_csv_upload\": []\r\n\
+    }"
+  sqlalchemy_uri: clickhouse://clickhouse
+  tables:
+  - columns:
+    - column_name: Hashtag
+      expression: arrayJoin(hashtags as hashtag)
+      type: String
+    - column_name: Keyword
+      expression: arrayJoin(keywords as keyword)
+      type: String
+    - column_name: Symbol
+      expression: arrayJoin(symbols as symbol)
+      type: String
+    - column_name: senderName
+      type: VARCHAR
+    - column_name: sendTimePersian
+      type: VARCHAR
+    - column_name: senderUsername
+      type: VARCHAR
+    - column_name: image
+      type: VARCHAR
+    - column_name: content
+      type: VARCHAR
+    - column_name: sendTime
+      type: DATETIME
+    - column_name: id
+      type: INTEGER
+    - column_name: hashtags
+      type: UNKNOWN
+    - column_name: symbols
+      type: UNKNOWN
+    - column_name: keywords
+      type: UNKNOWN
+    filter_select_enabled: true
+    main_dttm_col: sendTime
+    metrics:
+    - expression: COUNT(*)
+      metric_name: count
+      verbose_name: COUNT(*)
+    schema: default
+    sql: ''
+    table_name: sahamyab
+  - columns:
+    - column_name: count
+      type: UINT64
+    - column_name: Hashtag
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: "SELECT \"Hashtag\" AS \"Hashtag\",\r\n       count(*) AS count\r\nFROM\r\
+      \n  (SELECT arrayJoin(hashtags as hashtag) as Hashtag,\r\n          Count(arrayJoin(hashtags\
+      \ as hashtag)) as HashtagNum\r\n   FROM default.sahamyab\r\n   GROUP BY hashtag)\
+      \ AS expr_qry\r\nGROUP BY \"Hashtag\"\r\nORDER BY count DESC\r\nLIMIT 100"
+    table_name: Number of Each Hahshtag-hLrLvQKqT
+  - columns:
+    - column_name: count
+      type: UINT64
+    - column_name: Keyword
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: "SELECT \"Keyword\" AS \"Keyword\",\n       count(*) AS count\nFROM\n  (SELECT\
+      \ arrayJoin(keywords as keyword) as Keyword,\n          Count(Keyword) as KeywordNum\n\
+      \   FROM default.sahamyab\n   GROUP BY Keyword) AS expr_qry\nGROUP BY \"Keyword\"\
+      \nORDER BY count DESC\nLIMIT 1000"
+    table_name: admin user-Keywords Num-ZR8D1KPPw
+  - columns:
+    - column_name: count
+      type: UINT64
+    - column_name: Keyword
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: "SELECT \"Keyword\" AS \"Keyword\",\n      \"KeyNum\" AS count\nFROM\n  (SELECT\
+      \ arrayJoin(keywords as keyword) as Keyword,\n          Count(arrayJoin(keywords\
+      \ as keyword)) as KeyNum\n   FROM default.sahamyab\n   GROUP BY keyword) AS\
+      \ expr_qry\nORDER BY KeyNum DESC\nLIMIT 100"
+    table_name: Query default.admin user-Keywords Num-ZR8D1KPPw-Na0U_Ond3
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Untitled Query 2-NiPTmgF-L
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Untitled Query 2-jElHCj0sr
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Untitled Query 2-pD4Lowf_4O
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Untitled Query 2-AYrkHtDjY
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Untitled Query 2-BhSlCmKtq
+  - columns:
+    - column_name: HashtagNum
+      type: UINT64
+    - column_name: Hashtag
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(hashtags as hashtag) as Hashtag, Count(arrayJoin(hashtags
+      as hashtag)) as HashtagNum FROM default.sahamyab GROUP BY Hashtag
+    table_name: admin user-Symbol Nums-392l5MdoU
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: admin user-Symbol Nums-4cfSXK_y2
+  - columns:
+    - column_name: SymNum
+      type: UINT64
+    - column_name: Symbol
+      type: STRING
+    metrics:
+    - expression: count(*)
+      metric_name: count
+    schema: default
+    sql: SELECT arrayJoin(symbols as symbol) as Symbol, Count(arrayJoin(symbols as
+      symbol)) as SymNum FROM default.sahamyab GROUP BY symbol
+    table_name: Symbol Nums-gLEE511Mn8

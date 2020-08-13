@@ -6,7 +6,7 @@
 - [x] Elastic - Kibana dashboard - Redis 
 - [ ] Flask dashboard 
 - [ ] ML model
-- [ ] Clickhouse DBMS - PowerBI visualization
+- [ ] Clickhouse DBMS - Superset visualization
 
 ## Prerequisites
 
@@ -26,6 +26,7 @@ wordcloudfa (pip package)
 jwt (pip package)
 psutil (pip package)
 flask-login(pip package)
+docker
 ```
 
 ## Installing
@@ -108,6 +109,19 @@ $ sudo systemctl restart redis.service
 $ pip install redis
 ```
 
+### - Clickhouse
+create and run [clickhouse](https://clickhouse.tech/) container
+```
+$ docker network create -d bridge sahamyab
+$ docker run -d -p 8123:8123 -p 9000:9000 --network="sahamyab" --name clickhouse --ulimit nofile=262144:262144
+```
+
+### - Apache Superset
+create and run [superset](https://superset.apache.org) container
+```
+$ docker run --detach -p 8080:8088 --name superset --network="sahamyab" amancevice/superset
+```
+
 ## Usage
 1- In one shell, start ``nsqlookupd``:  
 ```
@@ -153,6 +167,20 @@ If you did that config part, should already be runnig; if not:
 ```
 $ sudo systemctl start redis.service
 ```
+
+Clickhouse:
+```
+$ python3 clickhouse_consumer.py
+```
+
+Superset:
+
+Go to ```localhost:8080```
+
+Add clickhouse to sources -> databases by ```clickhouse://clichouse``` and ```sahamyab``` in sources -> tables
+
+Go to manage -> import dashboards and import ```superset_dashboard.json``` that found in resources folder of project
+
 
 ## License
 
