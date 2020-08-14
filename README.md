@@ -181,6 +181,14 @@ Add clickhouse to sources -> databases by ```clickhouse://clichouse``` and ```sa
 
 Go to manage -> import dashboards and import ```superset_dashboard.json``` that found in resources folder of project
 
+Flask dashboard:
+
+```
+cd flask_dashboard
+sudo python3 run.py
+```
+
+
 
 ## License
 
