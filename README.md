@@ -4,7 +4,7 @@
 - [x] Sahamyab Crawler - NSQ Producer
 - [x] Tweet Preprocessing - Cassandra DBMS
 - [x] Elastic - Kibana dashboard - Redis 
-- [ ] Flask dashboard 
+- [x] Flask dashboard 
 - [ ] ML model
 - [x] Clickhouse DBMS - Superset visualization
 
