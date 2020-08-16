@@ -24,15 +24,15 @@ client = Client('localhost')
 # client.execute('DROP TABLE IF EXISTS default.sahamyab')
 client.execute('CREATE TABLE IF NOT EXISTS default.sahamyab '
                '('
-               'id INTEGER,'
-               'sendTime DATETIME,'
-               'sendTimePersian VARCHAR,'
+               'id Int64,'
+               'sendTime DateTime,'
+               'sendTimePersian String,'
                'hashtags Array(Nullable(String)),'
                'keywords Array(Nullable(String)),'
                'symbols Array(Nullable(String)),'
-               'senderUsername VARCHAR,'
-               'senderName VARCHAR,'
-               'content VARCHAR'
+               'senderUsername String,'
+               'senderName String,'
+               'content String'
                ')'
                ' ENGINE = MergeTree PARTITION BY toYYYYMMDD(sendTime) ORDER BY toYYYYMMDD(sendTime)')
 
